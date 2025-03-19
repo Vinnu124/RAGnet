@@ -1,0 +1,9 @@
+.lightning_studio
+.ollama
+trainingdoc.pdf
+.vscode-server-insiders
+__pycache__
+.vscode 
+.idea/this_studio.iml
+.wget-hsts
+.env
