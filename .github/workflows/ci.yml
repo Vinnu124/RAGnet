@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+
+      # CPU-only torch: the CUDA wheels are multi-GB and nothing in the test suite touches a GPU.
+      - name: Install dependencies
+        env:
+          UV_TORCH_BACKEND: cpu
+        run: uv sync --extra dev --python 3.12
+
+      - name: Run tests
+        run: uv run pytest -q
