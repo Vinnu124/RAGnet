@@ -103,10 +103,7 @@ def _parse_html(path: Path) -> list[Page]:
 
 
 def _parse_docx(path: Path) -> list[Page]:
-    try:
-        import docx  # python-docx
-    except ImportError as e:  # pragma: no cover
-        raise RuntimeError("pip install python-docx to ingest .docx files") from e
+    import docx  # python-docx (core dependency)
     d = docx.Document(str(path))
     parts = []
     for p in d.paragraphs:
