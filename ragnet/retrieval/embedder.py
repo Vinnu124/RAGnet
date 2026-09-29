@@ -1,8 +1,6 @@
 """Dense (bge-m3, GPU) + sparse (BM25 via fastembed, CPU) embeddings. Models load lazily on first use."""
 from __future__ import annotations
 
-from typing import Optional
-
 from qdrant_client import models
 
 from ragnet.config import Settings
