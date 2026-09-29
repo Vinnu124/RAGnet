@@ -1,5 +1,7 @@
 # RAGnet 2
 
+[![CI](https://github.com/Vinnu124/RAGnet/actions/workflows/ci.yml/badge.svg)](https://github.com/Vinnu124/RAGnet/actions/workflows/ci.yml)
+
 Fast, accurate, **agentic** RAG over your own documents. Runs entirely on your own GPU machine — no API keys.
 The LLM is served by any OpenAI-compatible server (vLLM, Ollama, llama.cpp); embeddings and reranking run in-process on the GPU.
 
