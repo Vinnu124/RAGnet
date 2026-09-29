@@ -68,4 +68,4 @@ class Embedder:
         self._load()
         dense = self._dense.encode(texts, normalize_embeddings=True, convert_to_numpy=True, show_progress_bar=False)
         sparse = [_to_sparse(e) for e in self._sparse.query_embed(texts)]
-        return list(zip(dense.tolist(), sparse))
+        return list(zip(dense.tolist(), sparse, strict=True))

@@ -30,7 +30,7 @@ class Reranker:
         self._load()
         pairs = [(query, (h.context + "\n" + h.text) if h.context else h.text) for h in hits]
         scores = self._model.predict(pairs, batch_size=32, show_progress_bar=False)
-        ranked = sorted(zip(hits, scores), key=lambda x: float(x[1]), reverse=True)[:top_k]
+        ranked = sorted(zip(hits, scores, strict=True), key=lambda x: float(x[1]), reverse=True)[:top_k]
         out = []
         for h, s in ranked:
             h.score = float(s)

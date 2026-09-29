@@ -121,7 +121,7 @@ class Store:
                     "tokens": c.tokens,
                 },
             )
-            for c, d, s in zip(chunks, dense, sparse)
+            for c, d, s in zip(chunks, dense, sparse, strict=True)
         ]
         for i in range(0, len(points), batch):
             self.client.upsert(self.collection, points=points[i : i + batch], wait=True)

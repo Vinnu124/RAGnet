@@ -81,7 +81,7 @@ async def run_agent(
         for tc, args in parsed:
             yield Event("status", _describe(tc.function.name, args))
         results = await asyncio.gather(*(tools.run(tc.function.name, args) for tc, args in parsed))
-        for (tc, _args), result in zip(parsed, results):
+        for (tc, _args), result in zip(parsed, results, strict=True):
             messages.append({"role": "tool", "tool_call_id": tc.id, "name": tc.function.name, "content": result})
 
     yield Event("answer", AgentResult(answer=answer, evidence=tools.evidence, steps=steps, trace=tools.calls))
