@@ -178,8 +178,8 @@ def serve(host: Optional[str] = None, port: Optional[int] = None):
     uvicorn.run(api_app, host=host or s.host, port=port or s.port)
 
 
-@app.command()
-def eval(
+@app.command("eval")
+def eval_cmd(
     golden: Path = typer.Argument(Path("eval/golden.jsonl")),
     mode: str = typer.Option("auto"),
     limit: Optional[int] = typer.Option(None),
